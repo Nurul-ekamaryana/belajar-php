@@ -3,7 +3,7 @@
     <input type="number" name="nis" placeholder="Ex. 120033102" /><br>
 
     <label for="nama">Nama Lengkap :</label>
-    <input type="text" name="nama" placeholder="Ex. Muthia" /><br>
+    <input type="text" name="nama" placeholder="Ex.nurul eka" /><br>
 
     <label for="tanggal_lahir">Tanggal Lahir :</label>
     <input type="date" name="tanggal_lahir" placeholder="Ex. 120033102" /><br>
