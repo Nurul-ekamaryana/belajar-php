@@ -1,16 +1,16 @@
 <form action="input-siswa.php" method="POST">
-    <label for="nis">Nomor induk siswa :</label>
-    <input type="number" name="nis" placeholder="Ex. 12001142"/><br>
+    <label for="nis">Nomor Induk Siswa :</label>
+    <input type="number" name="nis" placeholder="Ex. 12001142" /><br>
 
-    <label for="name">Nama lengkap :</label>
-    <input type="text" name="name" placeholder="Ex. Sehun oh"/><br>
+    <label for="nama">Nama Lengkap :</label>
+    <input type="text" name="nama" placeholder="Ex.nurul eka" /><br>
 
-    <label for="jk">jenis kelamin :</label>
-    <input type="radio" name="jk" value="L"/>Laki-Laki
-    <input type="radio" name="jk" value="p"/>Perempuan<br>
+    <label for="jk">Jenis Kelamin :</label>
+    <input type="radio" name="jk" value="L" /> Laki - Laki
+    <input type="radio" name="jk" value="P" /> Perempuan <br>
 
-    <label for="Kelas">kelas</label>
-    <select name="Kelas">
+    <label for="kelas">Kelas</label>
+    <select name="kelas">
         <option>10 RPL 1</option>
         <option>10 RPL 2</option>
         <option>11 RPL 1</option>
@@ -18,41 +18,43 @@
         <option>12 RPL 1</option>
         <option>12 RPL 2</option>
 </select><br>
-<label for="Tanggal_lahir">Tanggal lahir :</label>
-<input type="date" name="Tanggal_lahir" /><br>
 
-<label for="alamat">alamat :</label>
-<textarea name="alamat" placeholder="Ex.JL.planet Exo"/></textarea><br>
+<label for="tanggal_lahir">Tanggal Lahir :</label>
+<input type="date" name="tanggal_lahir" /><br>
 
-<label for="nilai">Nilai :</label>
-<input type="numer" name="nilai" placeholder="Ex. 80.56"/><br>
+<label for="alamat">Alamat :</label>
+<textarea name="alamat" placeholder="Ex. Jl. Arief Rahman"></textarea><br>
 
-<input type="submit" name="simpan" value="simpan data" />
-<input type="reset" name="reset" value="reset input" />
+<label for="nilai">Nilai:</label>
+<input type="number" name="nilai" placeholder="Ex. 80.86" /><br>
 
+<input type="submit" name="simpan" value="Simpan Data" />
+<input type="reset" name="reset" value="Reset Input" />
 </form>
 
 <?php
-      if ( isset($_POST["simpan"])) {
-        echo"<hr>";
-
-        //Deklarasi variabel
+    if( isset($_POST["simpan"]) ) {
+        echo "<hr>";
+        
+        //Deklarasi Variabel
         $nis = $_POST["nis"];
-        $namalengkap = $_POST["name"];
+        $namalengkap = $_POST["nama"];
         $jeniskelamin = $_POST["jk"];
-        $kelas = $_POST["Kelas"];
-        $tanggalahir = $_POST["Tanggal_lahir"];
+        $kelas = $_POST["kelas"];
+        $tanggal_lahir = $_POST["tanggal_lahir"];
         $alamat = $_POST["alamat"];
         $nilai = $_POST["nilai"];
 
-        //tampil data variabel
+        // Tampi Data Variabel
         echo "
-        Hasil inputan sebagi berikut: <br>
-        Nomor induk siswa : $nis <br>
-        Nama lengkap : $namalengkap <br>
-        jenis kelamin : $jeniskelamin <br>
-        kelas : $kelas <br>
-        tanggal lahir : $tanggalahir <br>
-        alamat : $alamat <br>
-        nilai : $nilai <br>";
-      }
+            Hasil Inputan Sebagai Berikut: <br>
+            Nomor Induk Siswa : $nis <br>
+            Nama Lengkap : $namalengkap <br>
+            Jenis Kelamin : $jeniskelamin <br>
+            Kelas : $kelas <br>
+            Tanggal Lahir : $tanggal_lahir <br>
+            Alamat : $alamat <br>
+            Nilai : $nilai <br>
+        ";        
+
+    }
