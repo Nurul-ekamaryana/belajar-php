@@ -1,49 +1,67 @@
-<form action="input-datadiri.php" method="POST">
-    <label for="nis">Nomor Induk Siswa:</label>
-    <input type="number" name="nis" placeholder="Ex. 120033102" /><br>
+<?php 
+      include('./input-config.php');
+      if ( $_SESSION ["login"] != TRUE){
+            header ('location:login.php');
+      }
 
-    <label for="nama">Nama Lengkap :</label>
-    <input type="text" name="nama" placeholder="Ex.nurul eka" /><br>
+      echo "<div class='container'>";
 
-    <label for="tanggal_lahir">Tanggal Lahir :</label>
-    <input type="date" name="tanggal_lahir" placeholder="Ex. 120033102" /><br>
+      echo " SELAMAT DATANG, ".$_SESSION['username'] . "<br>";
+      echo "ANDA SEBAGAI: ".$_SESSION['role'];
+      echo "<hr>";
 
-    <label for="nilai">Nilai :</label>
-    <input type="number" name="nilai" placeholder="Ex. 80.56" /><br>
+      echo "<a class='btn btn-sm btn-primary' href='logout.php'>logout</a>";
+      echo "<hr>";
 
-    <input type="submit" name="simpan" value="Simpan Data" />
-</form>    
+      echo "<a class='btn btn-sm btn-warning' href='input-datadiri-tambah.php'>Tambah Data</a>";
+      echo "<hr>";
+      
+      echo "<a class='btn btn-sm btn-info' href='input-datadiri-pdf.php'>Cetak PDF</a>";
+      echo "<hr>";
 
-<?php
-    include('./input-config.php');
-    echo "<hr>";
-    // Menampilkan data dari database
-    $no = 1;
-    $tabledata = "";
-    $data = mysqli_query($mysqli," SELECT * FROM datadiri ");
-    while($row = mysqli_fetch_array($data)){
-        $tabledata .= "
-        <tr>
-            <td>".$row["nis"]. "</td>
-            <td>".$row["namalengkap"]. "</td>
-            <td>".$row["tanggal_lahir"]. "</td>
-            <td>".$row["nilai"]. "</td>
-        </tr> 
-             
+      echo "Nama kelompok:Alya Elidia,Kartika sari dewi,M dzaki,Nurul eka maryana";
+      // READ - Menampilkan data dari database
+     
+      $no = 1;
+      $tabledata = "";
+      $data = mysqli_query($mysqli, " SELECT * FROM datanilai ");
+      while($row = mysqli_fetch_array($data)){
+            $tabledata .= " 
+                  <tr>
+                        <td>".$row["nis"]."</td>
+                        <td>".$row["namalengkap"]."</td>
+                        <td>".$row["jeniskelamin"]."</td>
+                        <td>".$row["kelas"]."</td>
+                        <td>".$row["nilaikehadiran"]."</td>
+                        <td>".$row["nilaitugas"]."</td>
+                        <td>".$row["nilaipts"]."</td>
+                        <td>".$row["nilaipas"]."</td>
+                        <td>
+                              <a class='btn btn-sm btn-success' href='input-datadiri-edit.php?nis=".$row["nis"]."'>Edit</a>
+                              &nbsp;-&nbsp;
+                              <a class='btn btn-sm btn-danger' href='input-datadiri-hapus.php?nis=".$row["nis"]."' 
+                              onclick='return confirm(\"Yakin ingin hapus ?\");'>Hapus</a>
+                        </td>
+                  </tr> 
+            ";
+            $no++;
+      }
+
+      echo " 
+            <table class='table table-primary table-bordered table-striped'>
+                  <tr>
+                        <th>NIS</th>
+                        <th>Nama Lengkap</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Kelas</th>
+                        <th>Nilai Kehadiran</th>
+                        <th>Nilai Tugas</th>
+                        <th>Nilai PTS</th>
+                        <th>Nilai PAD</th>
+                        <th>Aksi</th>
+                  </tr>
+                  $tabledata
+            </table> 
       ";
-      $no++;
-    }
-
-    echo "
-        <table cellpadding=5 border=1 cellspacing=0>
-        <tr>
-            <th>NIS</th>
-            <th>Nama Lengkap</th>
-            <th>Tanggal Lahir</th>
-            <th>Nilai</th>
-        </tr>
-        $tabledata
-     </table>       
- ";
-
- ?>
+      echo"</div>";
+?>
